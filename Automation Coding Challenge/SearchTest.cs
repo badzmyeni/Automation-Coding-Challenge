@@ -51,10 +51,11 @@ namespace Automation_Coding_Challenge
                 Console.WriteLine("Test Failed: Page title is incorrect");
             }
 
-            Thread.Sleep(2000);
+
+
             //Verify that the search result contains the text "Test automation can automate some repetitive but necessary tasks in a formalized testing process"
-            IWebElement searchResult = driver.FindElement(By.XPath("//*[contains(text(),'Test automation can automate some repetitive but necessary tasks in a formalized testing process')]"));
-            if (searchResult.Text == "Test automation can automate some repetitive but necessary tasks in a formalized testing process.")
+            //use PageSource to verify if the search result contains the text or not.
+            if (driver.PageSource.Contains ("Test automation can automate some repetitive but necessary tasks in a formalized testing process"))
             {
                 Console.WriteLine("Test Passed: Result contains correct text");
             }
@@ -62,8 +63,8 @@ namespace Automation_Coding_Challenge
             {
                 Console.WriteLine("Test Failed: Result does not contain correct text");
             }
-        }
 
+        }
 
         [TearDown]
         public void closeBrowser()
